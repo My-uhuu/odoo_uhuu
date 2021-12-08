@@ -5,6 +5,7 @@ if( !window.UHUUWidget ){
         j.src = 'https://uhuuvoipfiles.s3.us-west-1.amazonaws.com/uhuuWidgets.js';//Revisar url correcta
         h.parentNode.insertBefore(j, h);
         j.addEventListener('load', () => {
+            console.log("Hemos cargado uhuuWidgets.js")
             if( !window.UhuuChat ){
                 setTimeout(function(){ 
                     window.UhuuChatUrl = "https://ea06-177-232-83-239.ngrok.io";
@@ -15,8 +16,8 @@ if( !window.UHUUWidget ){
                     j2.src = 'https://ea06-177-232-83-239.ngrok.io/uhuuchatmini.min.js';
                     h2.parentNode.insertBefore(j2, h2);
                     j2.addEventListener('load', () => {
-                        console.log("handleUhuuChatBtn -- UHUUWidget.options 1:: ", window.UHUUWidget.options)
-                        console.log("Hemos cargado los 2 scripts")
+                        //console.log("handleUhuuChatBtn -- UHUUWidget.options 1:: ", window.UHUUWidget.options)
+                        console.log("Hemos cargado uhuuchatmini.min.js")
                     })
                 },100)
             }
