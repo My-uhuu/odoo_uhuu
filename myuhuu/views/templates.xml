@@ -1,0 +1,7 @@
+<odoo>
+    <template id="myuhuu_web_assets" name="My Uhuu Assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/myuhuu/static/lib/js/myuhuu.js" ></script>
+        </xpath>
+    </template>
+</odoo>
