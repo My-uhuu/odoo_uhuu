@@ -38,7 +38,7 @@
         #    'web/static/src/xml/**/*',
         #],
         'web.assets_common': [
-            '../static/lib/js/myuhuu.js'
+            'myuhuu/static/lib/js/myuhuu.js'
         ]
         #'web.qunit_suite_tests': [
         #    'web/static/src/js/webclient_tests.js',
