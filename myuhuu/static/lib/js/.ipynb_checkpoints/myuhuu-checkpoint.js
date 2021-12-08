@@ -6,7 +6,7 @@ if( !window.UHUUWidget ){
         h.parentNode.insertBefore(j, h);
         j.addEventListener('load', () => {
             console.log("Hemos cargado uhuuWidgets.js")
-            if( !window.UhuuChat ){
+            /*if( !window.UhuuChat ){
                 setTimeout(function(){ 
                     window.UhuuChatUrl = "https://ea06-177-232-83-239.ngrok.io";
                     console.log("handleUhuuBtn -- uhuuchat : afterload script - window.UHUUWidget = ",window.UHUUWidget)
@@ -20,7 +20,7 @@ if( !window.UHUUWidget ){
                         console.log("Hemos cargado uhuuchatmini.min.js")
                     })
                 },100)
-            }
+            }*/
             
         })
     }
