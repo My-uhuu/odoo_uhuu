@@ -1,4 +1,5 @@
 if( !window.UHUUWidget ){
+        window.uhuuOdoo = {};
         var h = document.getElementsByTagName('script')[0], j = document.createElement('script');
         j.async = false; 
         j.src = 'https://uhuuvoipfiles.s3.us-west-1.amazonaws.com/uhuuWidgets.js';//Revisar url correcta
