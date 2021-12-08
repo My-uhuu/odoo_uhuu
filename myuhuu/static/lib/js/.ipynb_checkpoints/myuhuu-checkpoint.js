@@ -6,12 +6,12 @@ if( !window.UHUUWidget ){
         j.addEventListener('load', () => {
             if( !window.UhuuChat ){
                 setTimeout(function(){ 
-                    window.UhuuChatUrl = "https://omnichannelqa.myuhuu.com";
+                    window.UhuuChatUrl = "https://ea06-177-232-83-239.ngrok.io";
                     console.log("handleUhuuBtn -- uhuuchat : afterload script - window.UHUUWidget = ",window.UHUUWidget)
                     //window.UHUUWidget.setUhuuWidgetOption( option.name, option.urlApp, option.params )
                     var h2 = document.getElementsByTagName('script')[0], j2 = document.createElement('script');
                     j2.async = false; 
-                    j2.src = 'https://omnichannelqa.myuhuu.com/uhuuchatmini.min.js';
+                    j2.src = 'https://ea06-177-232-83-239.ngrok.io/uhuuchatmini.min.js';
                     h2.parentNode.insertBefore(j2, h2);
                     j2.addEventListener('load', () => {
                         console.log("handleUhuuChatBtn -- UHUUWidget.options 1:: ", window.UHUUWidget.options)
