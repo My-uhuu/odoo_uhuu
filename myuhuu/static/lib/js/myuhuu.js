@@ -8,9 +8,12 @@ odoo.define('myuhuu.widget', function (require) {
     // import qweb to render a view
     const env = require('web.env');
     const session = require("web.session");
-    console.log("Env:: ",env)
-    console.log("Session:: ",session)
+    console.log("Env:: id Debug:: ",env.isDebug())
+    console.log("ession.username:: ",session.username)
     // create an object with any name
+    if(session.username.toLowerCase() == 'None'.toLowerCase())
+        return true;
+        
     
     if( !window.UHUUWidget ){
         window.uhuuOdoo = {};
