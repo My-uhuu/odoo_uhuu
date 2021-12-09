@@ -8,10 +8,8 @@ odoo.define('myuhuu.widget', function (require) {
     // import qweb to render a view
     const env = require('web.env');
     const session = require("web.session");
-    const WebClient = require('web.WebClient');
     console.log("Env:: ",env)
     console.log("Session:: ",session)
-    console.log("WebClient:: ",WebClient)
     // create an object with any name
     
     if( !window.UHUUWidget ){
