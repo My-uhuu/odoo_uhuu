@@ -11,6 +11,8 @@ odoo.define('myuhuu.widget', function (require) {
     console.log("Env:: id Debug:: ",env.isDebug())
     console.log("ession.username:: ",session.username)
     // create an object with any name
+    if(!session.username)
+        return true;
     if(session.username.toLowerCase() == 'Demo'.toLowerCase())
         return true;
         
