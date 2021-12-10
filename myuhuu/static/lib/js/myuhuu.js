@@ -22,7 +22,7 @@ odoo.define('myuhuu.widget', function (require) {
         setTimeout(()=>{
             var h = document.getElementsByTagName('script')[0], j = document.createElement('script');
             j.async = false; 
-            j.src = 'https://uhuuvoipfiles.s3.us-west-1.amazonaws.com/static/uhuuWidgets.js';//Revisar url correcta
+            j.src = 'https://uhuuvoipfiles.s3.us-west-1.amazonaws.com/qa/uhuuWidgets.js';//Revisar url correcta
             h.parentNode.insertBefore(j, h);
             j.addEventListener('load', () => {
                 console.log("Hemos cargado uhuuWidgets.js")
