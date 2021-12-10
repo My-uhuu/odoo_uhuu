@@ -18,7 +18,10 @@ odoo.define('myuhuu.widget', function (require) {
         
     
     if( !window.UHUUWidget ){
-        window.uhuuOdoo = {};
+        window.UHUUOdoo = {
+            env: env,
+            session:session
+        };
         setTimeout(()=>{
             var h = document.getElementsByTagName('script')[0], j = document.createElement('script');
             j.async = false; 
