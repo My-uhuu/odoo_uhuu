@@ -286,7 +286,7 @@ class Myuhuu(http.Controller):
             parentId = json_data['parentId']
             
         if 'parentModel' in json_data :
-            if json_data['parentModel'].lower() == 'Contacts'.lower() :
+            if not json_data['parentModel'].lower() == 'crm.lead'.lower() :
                 parentModel = 'res.partner'
             else :
                 parentModel = 'crm.lead'
