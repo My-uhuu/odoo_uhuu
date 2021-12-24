@@ -47,7 +47,7 @@ odoo.define('myuhuu.widget', function (require) {
                         //window.UHUUWidget.setUhuuWidgetOption( option.name, option.urlApp, option.params )
                         var h2 = document.getElementsByTagName('script')[0], j2 = document.createElement('script');
                         j2.async = false; 
-                        j2.src = 'https://793b-2806-2f0-7080-8483-5c0-ea47-2d6d-2160.ngrok.io/uhuuchatmini.min.js';
+                        j2.src = 'https://omnichannelqa.myuhuu.com/uhuuchatmini.min.js'; //'https://793b-2806-2f0-7080-8483-5c0-ea47-2d6d-2160.ngrok.io/uhuuchatmini.min.js';
                         h2.parentNode.insertBefore(j2, h2);
                         j2.addEventListener('load', () => {
                             console.log("handleUhuuChatBtn -- UHUUWidget.options 1:: ", window.UHUUWidget.options)
