@@ -26,12 +26,12 @@ odoo.define('myuhuu.widget', function (require) {
                 console.log("Hemos cargado uhuuWidgets.js")
                 if( !window.UhuuChat ){
                     setTimeout(function(){ 
-                        window.UhuuChatUrl = "https://4a21-2806-2f0-7080-8483-a47a-c322-e6ee-144b.ngrok.io";
+                        window.UhuuChatUrl = "https://omnichanneldev.myuhuu.com";
                         console.log("handleUhuuBtn -- uhuuchat : afterload script - window.UHUUWidget = ",window.UHUUWidget)
                         //window.UHUUWidget.setUhuuWidgetOption( option.name, option.urlApp, option.params )
                         var h2 = document.getElementsByTagName('script')[0], j2 = document.createElement('script');
                         j2.async = false; 
-                        j2.src = 'https://4a21-2806-2f0-7080-8483-a47a-c322-e6ee-144b.ngrok.io/uhuuchatmini.min.js'; //'https://793b-2806-2f0-7080-8483-5c0-ea47-2d6d-2160.ngrok.io/uhuuchatmini.min.js';
+                        j2.src = 'https://omnichanneldev.myuhuu.com/uhuuchatmini.min.js'; //'https://793b-2806-2f0-7080-8483-5c0-ea47-2d6d-2160.ngrok.io/uhuuchatmini.min.js';
                         h2.parentNode.insertBefore(j2, h2);
                         j2.addEventListener('load', () => {
                             console.log("handleUhuuChatBtn -- UHUUWidget.options 1:: ", window.UHUUWidget.options)
