@@ -33,16 +33,18 @@
     ],
     
     'application': False,
-    
-    'assets': {
+    "qweb":[
+        "views/templates.xml"
+    ],
+    #'assets': {
         #'web.assets_backend': [
         #    'web/static/src/xml/**/*',
         #],
-        'web.assets_common': [
-            'myuhuu/static/lib/js/myuhuu.js'
-        ]
+    #    'web.assets_common': [
+    #        'myuhuu/static/lib/js/myuhuu.js'
+    #    ]
         #'web.qunit_suite_tests': [
         #    'web/static/src/js/webclient_tests.js',
         #],
-    },
+    #},
 }
