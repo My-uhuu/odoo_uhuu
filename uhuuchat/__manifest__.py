@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "myuhuu omnichannel chat",
+    'name': "uhuuchat",
 
     'summary': """
         Powerfull app to manage internal collaboration, get leads and give postsales support.""",
