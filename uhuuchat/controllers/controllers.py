@@ -103,6 +103,32 @@ class Myuhuu(http.Controller):
         }
         return data
     
+    @http.route('/myuhuu/contacts/fields', auth='user', methods=['GET'], type='json')
+    def createContacts(self, **kw):
+        json_data = http.request.jsonrequest
+        fields, attributes, statusCode, message, contacts_fields = [], [], 200, "OK", []
+        if 'fields' in json_data:
+            fields = json_data["fields"]
+            
+        if 'attributes' in json_data:
+            attributes = json_data["attributes"]
+        
+        try:
+            contacts_fields = http.request.env['res.partner'].fields_get( fields, attributes )
+        
+        except Exception as err:
+            print("A fault occurred")
+            print(err)
+            statusCode = 500
+            message = err
+
+        data = {
+            "status" : statusCode,
+            "response": contacts_fields,
+            "message": message
+        }
+        return data
+
     # -------------------------------------
     # LEADS - Custom API - C,R,U
     # -------------------------------------
@@ -196,7 +222,32 @@ class Myuhuu(http.Controller):
         }
         return data
     
-    
+    @http.route('/myuhuu/leads/fields', auth='user', methods=['GET'], type='json')
+    def createContacts(self, **kw):
+        json_data = http.request.jsonrequest
+        fields, attributes, statusCode, message, leads_fields = [], [], 200, "OK", []
+        if 'fields' in json_data:
+            fields = json_data["fields"]
+            
+        if 'attributes' in json_data:
+            attributes = json_data["attributes"]
+        
+        try:
+            leads_fields = http.request.env['crm.lead'].fields_get( fields, attributes )
+        
+        except Exception as err:
+            print("A fault occurred")
+            print(err)
+            statusCode = 500
+            message = err
+
+        data = {
+            "status" : statusCode,
+            "response": leads_fields,
+            "message": message
+        }
+        return data
+
     # -------------------------------------
     # NOTES - Custom API - C,R,U
     # -------------------------------------
