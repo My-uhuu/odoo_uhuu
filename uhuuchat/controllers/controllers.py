@@ -104,7 +104,7 @@ class Myuhuu(http.Controller):
         return data
     
     @http.route('/myuhuu/contacts/fields', auth='user', methods=['GET'], type='json')
-    def createContacts(self, **kw):
+    def contactsFields(self, **kw):
         json_data = http.request.jsonrequest
         fields, attributes, statusCode, message, contacts_fields = [], [], 200, "OK", []
         if 'fields' in json_data:
@@ -222,7 +222,7 @@ class Myuhuu(http.Controller):
         return data
     
     @http.route('/myuhuu/leads/fields', auth='user', methods=['GET'], type='json')
-    def createContacts(self, **kw):
+    def leadsFields(self, **kw):
         json_data = http.request.jsonrequest
         fields, attributes, statusCode, message, leads_fields = [], [], 200, "OK", []
         if 'fields' in json_data:
