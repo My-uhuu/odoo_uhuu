@@ -1,10 +1,8 @@
 
-odoo.define('myuhuu.widget', function (require) {
+odoo.define('myuhuu.widget',[], function (require) {
     "use strict";
-    
-    const env = require('web.env');
-    const session = require("web.session");
-    const ajax = require('web.ajax');
+    const { session } = require('@web/session');
+    const ajax = require('@web/core/network/rpc_service')
 
     if(!session.username)
         return true;
@@ -13,7 +11,7 @@ odoo.define('myuhuu.widget', function (require) {
     
     if( !window.UHUUWidget ){
         window.UHUUOdoo = {
-            env: env,
+            env: {},
             session:session,
             ajax: ajax
         };
@@ -27,8 +25,6 @@ odoo.define('myuhuu.widget', function (require) {
                 if( !window.UhuuChat ){
                     setTimeout(function(){ 
                         window.UhuuChatUrl = "https://omnichannel.uhuu.chat";
-                        console.log("handleUhuuBtn -- uhuuchat : afterload script - window.UHUUWidget = ",window.UHUUWidget)
-                        //window.UHUUWidget.setUhuuWidgetOption( option.name, option.urlApp, option.params )
                         var h2 = document.getElementsByTagName('script')[0], j2 = document.createElement('script');
                         j2.async = false; 
                         j2.src = 'https://omnichannel.uhuu.chat/uhuuchatmini.min.js'; //'https://793b-2806-2f0-7080-8483-5c0-ea47-2d6d-2160.ngrok.io/uhuuchatmini.min.js';
@@ -64,8 +60,5 @@ odoo.define('myuhuu.widget', function (require) {
         //},500);
     }
  
-    // return the widget object
-    // so it can be inherited or overridden by another module
-    return true; //WidgetOne;
- 
+    return true;
 });

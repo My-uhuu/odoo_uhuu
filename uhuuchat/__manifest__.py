@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Productivity',
-    'version': '1.1.0',
+    'version': '1.2.0',
     'license':'LGPL-3',
     # any module necessary for this one to work correctly
     'depends': ['base','web','crm'],
@@ -35,14 +35,11 @@
     'application': False,
     
     'assets': {
-        #'web.assets_backend': [
-        #    'web/static/src/xml/**/*',
-        #],
-        'web.assets_common': [
-            'uhuuchat/static/lib/js/myuhuu.js'
-        ]
-        #'web.qunit_suite_tests': [
-        #    'web/static/src/js/webclient_tests.js',
-        #],
+        'web.assets_backend': [
+           'uhuuchat/static/lib/js/myuhuu.js',
+        ],
+        # 'web.assets_frontend': [
+        #     'uhuuchat/static/lib/js/myuhuu.js',
+        # ]
     },
 }
