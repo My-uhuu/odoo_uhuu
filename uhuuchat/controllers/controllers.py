@@ -18,7 +18,7 @@ class Myuhuu(http.Controller):
     def getContacts(self, **kw):
         ## Validar con try/catch para evitar problemas, o gestionar las respuestas del api
         json_data = http.request.jsonrequest
-        query, statusCode, message, contacts, fields, limit = [], 200, "Ok", [], ['id','name'], 5
+        query, statusCode, message, contacts, fields, limit = [], 200, "Ok", [], ['id','name'], None
         if 'fields' in json_data:
             fields = json_data["fields"]
             
@@ -136,7 +136,7 @@ class Myuhuu(http.Controller):
     @http.route('/myuhuu/leads', auth='user', methods=['GET'], type='json')
     def getLeads(self, **kw):
         json_data = http.request.jsonrequest
-        query, statusCode, message, leads, fields, limit = [], 200, "Ok", [], ['id','name'], 5
+        query, statusCode, message, leads, fields, limit = [], 200, "Ok", [], ['id','name'], None
         if 'fields' in json_data:
             fields = json_data["fields"]
         
@@ -255,7 +255,7 @@ class Myuhuu(http.Controller):
     @http.route('/myuhuu/notes', auth='user', methods=['GET'], type='json')
     def getNotes(self, **kw):
         json_data = http.request.jsonrequest
-        query, notes, statusCode, message, fields, limit  = [], [], 200, "Ok", ['id','name'], 5
+        query, notes, statusCode, message, fields, limit  = [], [], 200, "Ok", ['id','name'], None
         if 'fields' in json_data:
             fields = json_data["fields"]
         
