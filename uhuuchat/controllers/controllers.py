@@ -17,7 +17,7 @@ class Myuhuu(http.Controller):
     @http.route('/myuhuu/contacts', auth='user', methods=['GET'], type='json')
     def getContacts(self, **kw):
         ## Validar con try/catch para evitar problemas, o gestionar las respuestas del api
-        json_data = http.request.jsonrequest
+        json_data = http.request.get_json_data()
         query, statusCode, message, contacts, fields, limit = [], 200, "Ok", [], ['id','name'], None
         if 'fields' in json_data:
             fields = json_data["fields"]
@@ -49,7 +49,7 @@ class Myuhuu(http.Controller):
     
     @http.route('/myuhuu/contacts', auth='user', methods=['POST'], type='json')
     def createContacts(self, **kw):
-        json_data = http.request.jsonrequest
+        json_data = http.request.get_json_data()
         record, contact_db, statusCode, message = {}, {}, 200, "Ok"
         
         if 'record' in json_data :
@@ -77,7 +77,7 @@ class Myuhuu(http.Controller):
     
     @http.route('/myuhuu/contacts/<int:contactId>', auth='user', methods=['PUT'], type='json')
     def updateContacts(self, contactId, **kw):
-        json_data = http.request.jsonrequest
+        json_data = http.request.get_json_data()
         record, contact_db, statusCode, message = {}, {}, 200, "Ok"
         if 'record' in json_data :
             record = json_data["record"]
@@ -105,7 +105,7 @@ class Myuhuu(http.Controller):
     
     @http.route('/myuhuu/contacts/fields', auth='user', methods=['GET'], type='json')
     def contactsFields(self, **kw):
-        json_data = http.request.jsonrequest
+        json_data = http.request.get_json_data()
         fields, attributes, statusCode, message, contacts_fields = [], [], 200, "OK", []
         if 'fields' in json_data:
             fields = json_data["fields"]
@@ -135,7 +135,7 @@ class Myuhuu(http.Controller):
     #
     @http.route('/myuhuu/leads', auth='user', methods=['GET'], type='json')
     def getLeads(self, **kw):
-        json_data = http.request.jsonrequest
+        json_data = http.request.get_json_data()
         query, statusCode, message, leads, fields, limit = [], 200, "Ok", [], ['id','name'], None
         if 'fields' in json_data:
             fields = json_data["fields"]
@@ -168,7 +168,7 @@ class Myuhuu(http.Controller):
     
     @http.route('/myuhuu/leads', auth='user', methods=['POST'], type='json')
     def createLeads(self, **kw):
-        json_data = http.request.jsonrequest
+        json_data = http.request.get_json_data()
         record, lead_db, statusCode, message = {}, {}, 200, "Ok"
         
         if 'record' in json_data :
@@ -196,7 +196,7 @@ class Myuhuu(http.Controller):
     
     @http.route('/myuhuu/leads/<int:leadId>', auth='user', methods=['PUT'], type='json')
     def updateLeads(self, leadId, **kw):
-        json_data = http.request.jsonrequest
+        json_data = http.request.get_json_data()
         record, lead_db, statusCode, message = {}, {}, 200, "Ok"
         if 'record' in json_data :
             record = json_data["record"]
@@ -224,7 +224,7 @@ class Myuhuu(http.Controller):
     
     @http.route('/myuhuu/leads/fields', auth='user', methods=['GET'], type='json')
     def leadsFields(self, **kw):
-        json_data = http.request.jsonrequest
+        json_data = http.request.get_json_data()
         fields, attributes, statusCode, message, leads_fields = [], [], 200, "OK", []
         if 'fields' in json_data:
             fields = json_data["fields"]
@@ -254,7 +254,7 @@ class Myuhuu(http.Controller):
     #
     @http.route('/myuhuu/notes', auth='user', methods=['GET'], type='json')
     def getNotes(self, **kw):
-        json_data = http.request.jsonrequest
+        json_data = http.request.get_json_data()
         query, notes, statusCode, message, fields, limit  = [], [], 200, "Ok", ['id','name'], None
         if 'fields' in json_data:
             fields = json_data["fields"]
@@ -286,7 +286,7 @@ class Myuhuu(http.Controller):
     
     @http.route('/myuhuu/notes', auth='user', methods=['POST'], type='json')
     def createNotes(self, **kw):
-        json_data = http.request.jsonrequest
+        json_data = http.request.get_json_data()
         parentId, parentModel, record, statusCode, message, response = '', '', {}, 200, "Record created successfully", ""
 
         if 'parentId' in json_data :
@@ -323,4 +323,3 @@ class Myuhuu(http.Controller):
             message = "Record data or parent data is missing"            
         
         return { "status":statusCode, "message":message, "response":response }
-
