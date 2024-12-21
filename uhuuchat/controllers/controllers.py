@@ -19,6 +19,12 @@ class Myuhuu(http.Controller):
         ## Validar con try/catch para evitar problemas, o gestionar las respuestas del api
         json_data = http.request.get_json_data()
         query, statusCode, message, contacts, fields, limit = [], 200, "Ok", [], ['id','name'], None
+        useTags, tag = "", ""
+
+        if "useTags" in json_data and "tag" in json_data:
+            useTags = json_data['useTags']
+            tag = json_data['tag']
+
         if 'fields' in json_data:
             fields = json_data["fields"]
             
@@ -27,9 +33,22 @@ class Myuhuu(http.Controller):
             
         if 'query' in json_data :
             query = json_data["query"]
+
             try:
-                contacts_db = http.request.env['res.partner'].search(query, limit=limit)
-                contacts = contacts_db.read(fields) #[{'id': record.id} for record in contacts_db]
+                if useTags and not useTags == 'false':
+                    tagParams = [["name", "ilike", tag]]
+                    tagFields = ["id"]
+                    category_db = http.request.env['res.partner.category'].search(tagParams, limit=1)
+                    category = category_db.read(tagFields)
+                    if len(category):
+                        #query.append(['category_id', '=', category[0]['id']])
+                        contactParams =[["category_id","in",[category[0]['id']]]]
+                        contacts_db = http.request.env['res.partner'].search(contactParams, limit=limit)
+                        contacts = contacts_db.read(fields) #[{'id': record.id} for record in contacts_db]
+
+                else:
+                    contacts_db = http.request.env['res.partner'].search(query, limit=limit)
+                    contacts = contacts_db.read(fields) #[{'id': record.id} for record in contacts_db]
             
             except Exception as err:
                 print("A fault occurred")
@@ -137,6 +156,12 @@ class Myuhuu(http.Controller):
     def getLeads(self, **kw):
         json_data = http.request.get_json_data()
         query, statusCode, message, leads, fields, limit = [], 200, "Ok", [], ['id','name'], None
+        useTags, tag = "", ""
+
+        if "useTags" in json_data and "tag" in json_data:
+            useTags = json_data['useTags']
+            tag = json_data['tag']
+
         if 'fields' in json_data:
             fields = json_data["fields"]
         
@@ -146,8 +171,20 @@ class Myuhuu(http.Controller):
         if 'query' in json_data :
             query = json_data["query"]
             try:
-                leads_db = http.request.env['crm.lead'].search(query, limit=limit)
-                leads = leads_db.read(fields)
+                if useTags and not useTags == 'false':
+                    tagParams = [["name", "ilike", tag]]
+                    tagFields = ["id"]
+                    tag_db = http.request.env['crm.tag'].search(tagParams, limit=1)
+                    tag = tag_db.read(tagFields)
+                    if len(tag):
+                        #query.append(['category_id', '=', category[0]['id']])
+                        contactParams =[["tag_ids","in",[tag[0]['id']]]]
+                        leads_db = http.request.env['crm.lead'].search(query, limit=limit)
+                        leads = leads_db.read(fields)
+
+                else:
+                    leads_db = http.request.env['crm.lead'].search(query, limit=limit)
+                    leads = leads_db.read(fields)
             
             except Exception as err:
                 print("A fault occurred")
