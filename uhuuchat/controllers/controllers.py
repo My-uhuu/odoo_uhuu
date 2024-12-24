@@ -41,14 +41,13 @@ class Myuhuu(http.Controller):
                     category_db = http.request.env['res.partner.category'].search(tagParams, limit=1)
                     category = category_db.read(tagFields)
                     if len(category):
-                        #query.append(['category_id', '=', category[0]['id']])
                         contactParams =[["category_id","in",[category[0]['id']]]]
                         contacts_db = http.request.env['res.partner'].search(contactParams, limit=limit)
-                        contacts = contacts_db.read(fields) #[{'id': record.id} for record in contacts_db]
+                        contacts = contacts_db.read(fields) 
 
                 else:
                     contacts_db = http.request.env['res.partner'].search(query, limit=limit)
-                    contacts = contacts_db.read(fields) #[{'id': record.id} for record in contacts_db]
+                    contacts = contacts_db.read(fields) 
             
             except Exception as err:
                 print("A fault occurred")
@@ -177,9 +176,8 @@ class Myuhuu(http.Controller):
                     tag_db = http.request.env['crm.tag'].search(tagParams, limit=1)
                     tag = tag_db.read(tagFields)
                     if len(tag):
-                        #query.append(['category_id', '=', category[0]['id']])
-                        contactParams =[["tag_ids","in",[tag[0]['id']]]]
-                        leads_db = http.request.env['crm.lead'].search(query, limit=limit)
+                        leadParams =[["tag_ids","in",[tag[0]['id']]]]
+                        leads_db = http.request.env['crm.lead'].search(leadParams, limit=limit)
                         leads = leads_db.read(fields)
 
                 else:
